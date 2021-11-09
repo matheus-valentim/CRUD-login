@@ -22,6 +22,9 @@ app.get('/', async function(req, res) {
 app.get('/registro', async (req, res)=> {
 	res.sendFile(__dirname + '/html/registro.html')
 })
+app.get('/falha', async (req, res)=> {
+	res.sendFile(__dirname + '/html/falha.html')
+})
 app.get('/sucesso', async function(req, res) {
 	if (req.session.loggedin) {
 		res.sendFile(__dirname + '/html/sucesso.html')
@@ -41,4 +44,4 @@ app.post('/regis', (req, res)=> {
 })
 
 //levanta o servidor
-app.listen(2000 , () => console.log('aberto na porta 3000'))
+app.listen(3000 , () => console.log('aberto na porta 3000'))

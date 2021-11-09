@@ -1,5 +1,7 @@
 var bcrypt = require('bcrypt')
 const connection = require('./DB')
+const secret = 'Esse_é_o_secret_mais_secreto_de-todos_100_por_cento_confirmado.'
+const jwt = require("jsonwebtoken")
 
 const login = async (req, res) =>{
 	let username = req.body.senha
@@ -20,7 +22,8 @@ async function checkUser(username, password, req, res) {
 				if(match) {
 				req.session.loggedin = true
 				req.session.username = username
-				res.redirect('/sucesso')
+				const token = jwt.sign({id: results[0].id}, secret, {expiresIn: 300})
+				res.redirect('/sucesso') 
 				}else {
 					res.redirect('/')
 				}
