@@ -1,4 +1,4 @@
-# CRUD-login
+# CRUD-login ![badge](https://img.shields.io/badge/license-MIT-sucess)
 
 > é um projeto de CRUD (Create Read Update Delete) de login feito para estudos.
 
@@ -26,6 +26,6 @@ Para usar CRUD-login, siga estas etapas:
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](https://github.com/matheus-valentim/CRUD-login/blob/main/LICENSE) para mais detalhes.
 
 [⬆ Voltar ao topo](#CRUD-login)<br>
