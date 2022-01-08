@@ -9,8 +9,6 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Implementação do design (front-end)
 - [x] Codificação do registro de usuário
 - [x] codificação do login de usuário
-- [ ] criação de JWT
-- [ ] Proteger de SQL injection
 - [ ] Criação da função de update
 - [ ] Criação da função de deletar conta
 - [ ] Criação da função de redefinir/recuperar a senha
