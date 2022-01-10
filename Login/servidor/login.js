@@ -2,16 +2,14 @@ var bcrypt = require('bcrypt')
 const connection = require('./DB')
 
 const login = async (req, res) =>{
-	let username = req.body.senha
+	var username = req.body.senha
 	let password = req.body.usuario
-	console.log(username)
 	if (username && password) {
 			checkUser(username, password, req, res)
 	} else {
 		res.redirect('/')
 	}
 }
-
 async function checkUser(username, password, req, res) {
 	connection.query(`SELECT * FROM accounts WHERE username = ?`, [username], function(error, results, fields) {
 		if (results.length > 0){

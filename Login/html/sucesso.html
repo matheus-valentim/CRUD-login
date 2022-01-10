@@ -18,12 +18,21 @@ section{
     background-color: #040404;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
 }
 #container{
     padding: 2rem 5rem;
     background-color: #11AF03;
+    border-radius: 13px;
+}
+button{
+    cursor: pointer;
+    border: none;
+    background-color: #183292;
+    color: white;
+    padding: 30px;
     border-radius: 13px;
 }
 
@@ -34,6 +43,23 @@ section{
         <div id="container">
             <h1>Bem vindo, [usuário]!!</h1>
         </div>
+        <button id="botao" onclick="clicar()" name="botao"><h2>Atualize ou delete sua conta aqui.</h2></button>
     </section>
 </body>
+<script>
+        const botao = document.getElementById('botao')
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({'data':'tudo certo'}),
+        }
+        function clicar(){
+            if (confirm('Quer mesmo deletar sua conta?')){
+                fetch('/deletar', options)
+                alert('conta deletada com sucesso!')
+            }
+        }
+</script>
 </html>

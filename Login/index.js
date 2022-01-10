@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 var path = require('path')
 let registro = require('./servidor/registro')
 let login = require('./servidor/login')
+const connection = require('./servidor/DB')
 
 var app = express()
 app.use(session({
@@ -31,17 +32,22 @@ app.get('/sucesso', async function(req, res) {
 	} else {
 		res.sendFile(__dirname + '/html/falha.html')
 	}
-});
+})
 
 // pegar informações do front-end
 app.post('/auth', async function(req, res) {
 	login(req, res)
-});
+})
 
 //registro de usuário
 app.post('/regis', (req, res)=> {
 	registro(req, res)
 })
-
+app.post('/deletar', (req, res) =>{
+	console.log(req.body)
+	res.end()
+	connection.query(`DELETE FROM accounts WHERE username = '${req.session.username}'`, ()=>{
+	})
+})
 //levanta o servidor
 app.listen(3000 , () => console.log('aberto na porta 3000'))
