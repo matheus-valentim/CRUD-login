@@ -10,8 +10,10 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Codificação do registro de usuário
 - [x] codificação do login de usuário
 - [x] Criação da função de deletar conta
-- [ ] Criação da função de update
 - [ ] Criação da função de redefinir/recuperar a senha
+- [ ] Criação da função de update
+- [ ] Usar o padrão MVC
+- [ ] implementação das respostas de erro no front-end
 
 ## 💻 Dependências
 
@@ -24,6 +26,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 `mysql2: 2.3.3`
 <br>
 `nodemon: 2.0.15`
+<br>
+`nodemailer: 6.7.2`
 
 ## ☕ Usando CRUD-login
 
