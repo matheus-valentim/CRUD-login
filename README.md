@@ -10,6 +10,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Codificação do registro de usuário
 - [x] codificação do login de usuário
 - [x] Criação da função de deletar conta
+- [ ] valida~ção de formulários
 - [ ] Criação da função de redefinir/recuperar a senha
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC
