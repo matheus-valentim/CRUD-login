@@ -16,6 +16,7 @@ async function checkUser(username, password, req, res) {
 			if(results[0].password && results[0].password){
 				const match =  bcrypt.compareSync(password, results[0].password)
 				if(match) {
+					console.log('certo')
 				req.session.loggedin = true
 				req.session.username = username
 				res.redirect('/sucesso') 

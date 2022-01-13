@@ -20,67 +20,59 @@
     height: 100vh;
 }
 h1{
-    color: white;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 label{
     color: #FFFF;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
-}
-label{
     margin-bottom: 5px;
 }
 input[type=submit]{
-    border: none;
+    border: 1px solid #c0cf1d;
     padding: 10px 35px;
-    box-shadow: 0px 1px 1px #FFF278;
-    background-color:#c0cf1d;
+    background-color:#040404;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-}
-input[type=text], input[type=password]{
-    padding: 6px 6px;
-    background-color: #040404;
-    border: 1px solid white;
-    box-shadow: 0px 1px 1px white;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
     color: white;
+}
+input[type=text]{
+  margin-right: 1rem;
+  padding: .5rem;
+  border: 1px solid #2936e9;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  font-size: 3rem;
+  border-radius: 5px;
+  background-color: #040404;
+  color: white;
 }
 .input{
     display: flex;
-    flex-direction: column;
     margin: 30px 0;
 }
-h1{
-    text-align: center;
-}
-
 form{
     min-width: 15rem;
 }
 .container{
-    padding: 100px 100px;
+    padding: 50px 100px;
     border-radius: 5px;
     border: 1px solid white;
 }
-input[type=text]:focus, input[type=password]:focus{
+input[type=text]:focus{
     border: 1px solid #11AF03;
     box-shadow: 0px 1px 1px #11AF03;
     outline: none;
 }
-.link{
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-a{
+.texto{
     color: white;
+    text-align: center;
 }
 @media(max-width:400px){
     .container{
@@ -97,23 +89,32 @@ a{
 <body>
     <section class="wrapper">
         <section class="container">
-            <h1>Login</h1>
-            <form action="auth" method="post">
+            <div class="texto">
+                <h1>Pin</h1>
+                <p>Pegue o pin de 4 digitos no seu email.</p>
+            </div>
+            <form action="validacao" method="post">
                 <div class="input">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="senha" id="usuario">
+                    <input type="text" maxlength="1" name="pin1" />
+                    <input type="text" maxlength="1" name="pin2" />
+                    <input type="text" maxlength="1" name="pin3" />
+                    <input type="text" maxlength="1" name="pin4" />
                 </div>
-                <div class="input">
-                    <label for="senha">Senha:</label>
-                    <input type="password" name="usuario" id="senha">
-                </div>
-                <div class="link">
-                    <a href="/registro">Se registre aqui!</a>
-                    <a href="/recuperar">Esqueceu a senha?</a>
-                </div>
-                <input type="submit" value="Confirmar">
+                <input class="botao" type="submit" value="Confirmar">
             </form>
         </section>
     </section>
 </body>
+<script>
+    const inputs = document.querySelectorAll("input[type=text]")
+const form = document.querySelector("form")
+
+inputs.forEach((input, chave) => {
+  input.addEventListener("keyup", function () {
+    if (input.value) {
+        inputs[chave + 1].focus()
+    }
+  })
+})
+</script>
 </html>
