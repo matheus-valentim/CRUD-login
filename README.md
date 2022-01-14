@@ -8,13 +8,14 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] Implementação do design (front-end)
 - [x] Codificação do registro de usuário
-- [x] codificação do login de usuário
+- [x] Codificação do login de usuário
 - [x] Criação da função de deletar conta
-- [ ] valida~ção de formulários
-- [ ] Criação da função de redefinir/recuperar a senha
+- [x] Criação da função de redefinir/recuperar a senha
+- [ ] Validação de formulários
+- [ ] Regras de negócio para o login
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC
-- [ ] implementação das respostas de erro no front-end
+- [ ] Multiplas sessões no express session
 
 ## 💻 Dependências
 
@@ -37,8 +38,10 @@ Para usar CRUD-login, siga estas etapas:
 1. Vá até "CRUD-login/Login/servidor/DB.js".
 2. Mude a senha e o usuário para o da sua database (nesse projeto é usado o MySQL como banco de dados).
 3. O nome da tabela é nodelogin, sua table se chama accounts e seus campos são: ID, username, password e email.
-4. baixe as dependências com o comando "npm install".
-5. Agora só dar "npm start" que o projeto irá rodar no localhost na porta 3000.
+4. Vá até "CRUD-login/Login/servidor/smtp/index.js".
+5. no JSON na linha 1 chamado config coloque o seu email e senha nos respectivos campos: user e pass
+6. baixe as dependências com o comando "npm install".
+7. Agora só dar "npm start" que o projeto irá rodar no localhost na porta 3000.
 
 ## 📝 Licença
 
