@@ -12,6 +12,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criação da função de deletar conta
 - [x] Criação da função de redefinir/recuperar a senha
 - [ ] Validação de formulários
+- [ ] Regras de negócio para o login
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC
 - [ ] Implementação das respostas de erro no front-end
