@@ -15,8 +15,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Regras de negócio para o login
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC
-- [ ] Implementação das respostas de erro no front-end
-- [ ] Multiplas sessôes no express session
+- [ ] Multiplas sessões no express session
 
 ## 💻 Dependências
 
