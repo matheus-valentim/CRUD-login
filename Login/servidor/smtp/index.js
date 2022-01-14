@@ -1,8 +1,8 @@
 const config = {
     host: "smtp.gmail.com",
     port: 587,
-    user: "matheusfigueiredo8016@gmail.com",
-    pass: "Abc,1234!",
+    user: "seuemail@hotmail.com",
+    pass: "sua senha",
   };
 
   const nodemailer = require("nodemailer");
