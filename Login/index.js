@@ -7,7 +7,6 @@ let login = require('./servidor/login')
 const connection = require('./servidor/DB')
 const mudarSenha = require('./servidor/mudarSenha')
 var bcrypt = require('bcrypt')
-const { Console } = require('console')
 
 var app = express()
 

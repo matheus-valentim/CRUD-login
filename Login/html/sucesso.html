@@ -41,12 +41,19 @@ button{
 <body>
     <section id="wrapper">
         <div id="container">
-            <h1>Bem vindo, [usuário]!!</h1>
+            <h1 id="texto"></h1>
         </div>
         <button id="botao" onclick="clicar()" name="botao"><h2>Atualize ou delete sua conta aqui.</h2></button>
     </section>
 </body>
     <script>
+        async function carregar(){
+            const texto =  document.getElementById('texto')
+            const user  = await fetch('/user').then(response => response.json())
+            .then(json =>texto.innerText =  `Bem vindo, ${json}!!`)
+        }
+        carregar()
+        
         const botao = document.getElementById('botao')
         const options = {
             method: 'POST',
