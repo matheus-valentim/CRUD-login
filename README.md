@@ -13,6 +13,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criação da função de redefinir/recuperar a senha
 - [x] Validação de formulários
 - [ ] Regras de negócio para o login
+- [ ] Implementação do responsivo
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC e organizar o código
 - [ ] Multiplas sessões no express session
