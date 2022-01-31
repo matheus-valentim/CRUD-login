@@ -38,7 +38,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Para usar CRUD-login, siga estas etapas:
 
-1. Crie um arquivo chamado ".env"
+1. Crie um arquivo chamado ".env" no root do projeto
 2. dentro dele é preciso preencher algumas variáveis que são:<br><br>
   `HOSTSMTP` = O nome do host do seu serviço de email usado para o envio de email de recuperaração de senha (se for o google seria "smtp.gmail.com" por exemplo)<br>
   `PORTSMTP` = O numero da porta que o nodemailer vai usar para envio de emails (a padrão é a 587)<br>
