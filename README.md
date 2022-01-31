@@ -30,6 +30,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 `nodemon: 2.0.15`
 <br>
 `nodemailer: 6.7.2`
+<br>
+`dotenv: 14.3.2`
 
 ## ☕ Usando CRUD-login
 
