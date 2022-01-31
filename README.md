@@ -11,7 +11,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Codificação do login de usuário
 - [x] Criação da função de deletar conta
 - [x] Criação da função de redefinir/recuperar a senha
-- [ ] Validação de formulários
+- [x] Validação de formulários
 - [ ] Regras de negócio para o login
 - [ ] Criação da função de update
 - [ ] Usar o padrão MVC e organizar o código
@@ -37,13 +37,19 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Para usar CRUD-login, siga estas etapas:
 
-1. Vá até "CRUD-login/Login/servidor/DB.js".
-2. Mude a senha e o usuário para o da sua database (nesse projeto é usado o MySQL como banco de dados).
-3. O nome da tabela é nodelogin, sua table se chama accounts e seus campos são: ID, username, password e email.
-4. Vá até "CRUD-login/Login/servidor/smtp/index.js".
-5. No JSON chamado config que está na linha 1 coloque o seu email e senha nos respectivos campos: user e pass
-6. Baixe as dependências com o comando "npm install".
-7. Agora só dar "npm start" que o projeto irá rodar no localhost na porta 3000.
+1. Crie um arquivo chamado ".env"
+2. dentro dele é preciso preencher algumas variáveis que são:<br><br>
+  `HOSTSMTP` = O nome do host do seu serviço de email usado para o envio de email de recuperaração de senha (se for o google seria "smtp.gmail.com" por exemplo)<br>
+  `PORTSMTP` = O numero da porta que o nodemailer vai usar para envio de emails (a padrão é a 587)<br>
+  `USERSMTP` = O nome do seu email (exemplo@gmail.com)<br>
+  `PASSSMTP` = A senha do seu email<br>
+  `HOSTSSQL` = O host do seu banco de dados (provavelmente será localhost)<br>
+  `DATABASE` = O nome do banco de dados que é "nodelogin"<br>
+  `USERSQL` = O nome do usuário do banco de dados <br>
+  `PASSSQL` = A senha do seu banco de dados<br><br>
+4. O nome da tabela é nodelogin, sua table se chama accounts e seus campos são: ID, username, password e email.
+7. Baixe as dependências com o comando "npm install".
+8. Agora só dar "npm start" que o projeto irá rodar no localhost na porta 3000.
 
 ## 📝 Licença
 
