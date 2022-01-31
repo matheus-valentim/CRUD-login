@@ -12,6 +12,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+/*blodo do wrapper*/
 .wrapper{
     background-color: #040404;
     display: flex;
@@ -19,21 +20,24 @@
     align-items: center;
     height: 100vh;
 }
-h1{
+/*bloco do main*/
+.main{
+    padding: 70px 100px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.main__h1{
     color: white;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     text-align: center;
 }
-label{
-    color: #FFFF;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
-    margin-bottom: 5px;
+/*bloco do container*/
+.container{
+    min-width: 15rem;
 }
-input[type=submit]{
+.container__botao{
     border: none;
     padding: 10px 35px;
     box-shadow: 0px 1px 1px #FFF278;
@@ -42,7 +46,20 @@ input[type=submit]{
     border-radius: 5px;
     cursor: pointer;
 }
-input[type=password], input[type=email]{
+/*bloco do conteudo*/
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+.conteudo__label{
+    color: #FFFF;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+.conteudo__input{
     padding: 6px 6px;
     background-color: #040404;
     border: 1px solid white;
@@ -51,26 +68,55 @@ input[type=password], input[type=email]{
     width: 100%;
     color: white;
 }
-.input{
+.conteudo__mensagem__svgError{
+    height: 14px;
+    width: 14px;
+}
+.conteudo__mensagem__svgCerto{
+    width: 14px;
+    height: 14px;
+}
+.conteudo--error input {
+	border-color: #e74c3c;
+    box-shadow: 0px 1px 1px #e74c3c;
+}
+.conteudo--success input{
+	border: 1px solid #11AF03;
+    box-shadow: none;
+	visibility: visible;
+}
+
+.conteudo--error .conteudo__mensagem__svgError{
+	color: #e74c3c;
+    display: block;
+}
+.conteudo--sucesss small{
+    display: none;
+}
+.conteudo__mensagem__svgCerto{
+    display: none;
+}
+.conteudo--success .conteudo__mensagem__svgCerto{
+    display: block;
+    color: #11AF03;
+}
+.conteudo--error small {
+	color: #e74c3c;
+    margin-left: 5px;
+    display: block
+}
+.conteudo__mensagem{
+    margin-top: 5px ;
     display: flex;
-    flex-direction: column;
-    margin: 30px 0;
+    align-items: flex-start;
 }
-form{
-    min-width: 15rem;
-}
-.container{
-    padding: 50px 100px;
-    border-radius: 5px;
-    border: 1px solid white;
-}
-input[type=password]:focus, input[type=email]:focus{
-    border: 1px solid #11AF03;
-    box-shadow: 0px 1px 1px #11AF03;
+.conteudo__input:focus{
+    border: 1px solid #4851C7;
+    box-shadow: 0px 1px 1px #5359af;
     outline: none;
 }
 @media(max-width:400px){
-    .container{
+    .main{
         width: 100%;
         height: 100vh;
         display: flex;
@@ -83,24 +129,102 @@ input[type=password]:focus, input[type=email]:focus{
 </head>
 <body>
     <section class="wrapper">
-        <section class="container">
-            <h1>Recuperar senha</h1>
-            <form action="recSenha" method="post">
-                <div class="input">
-                    <label for="email">Seu usuário</label>
-                    <input type="text" name='username' id="email">
+        <section class="main">
+            <h1 class="main__h1">Recuperar senha</h1>
+            <form class="container" action="recSenha" method="post">
+                <div class="conteudo">
+                    <label class='conteudo__label' for="username">Seu usuário</label>
+                    <input class="conteudo__input" type="text" name='username' id="username">
+                    <div class="conteudo__mensagem">
+                        <svg class="conteudo__mensagem__svgCerto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1200 1200"><path d="M600 0C268.629 0 0 268.629 0 600s268.629 600 600 600s600-268.629 600-600S931.371 0 600 0zm257.446 281.03l124.657 124.658l-389.354 389.43L468.823 918.97L344.165 794.312l-126.27-126.344l123.853-123.853l126.27 126.343L857.446 281.03z" fill="currentColor"/></svg>
+
+                        <svg class="conteudo__mensagem__svgError" viewBox="0 0 24 24"><path d="M14.8 4.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H5.298C3.477 21 2 19.47 2 17.581c0-.639.173-1.264.498-1.807L9.2 4.613c.962-1.603 2.996-2.094 4.543-1.096c.428.276.79.651 1.057 1.096zm-2.22.839a1.077 1.077 0 0 0-1.514.365L4.365 16.98a1.17 1.17 0 0 0-.166.602c0 .63.492 1.14 1.1 1.14H18.7c.206 0 .407-.06.581-.172a1.164 1.164 0 0 0 .353-1.57L12.933 5.817a1.12 1.12 0 0 0-.352-.365zM12 17a1 1 0 1 1 0-2a1 1 0 0 1 0 2zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z" fill="currentColor"/></svg>
+                        <small></small>
+                    </div>
                 </div>
-                <div class="input">
-                    <label for="senha1">Nova senha</label>
-                    <input type="password" id="senha1">
+                <div class="conteudo">
+                    <label class='conteudo__label' for="senha1">Nova senha</label>
+                    <input class="conteudo__input" type="password" id="senha1">
+                    <div class="conteudo__mensagem">
+                        <svg class="conteudo__mensagem__svgCerto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1200 1200"><path d="M600 0C268.629 0 0 268.629 0 600s268.629 600 600 600s600-268.629 600-600S931.371 0 600 0zm257.446 281.03l124.657 124.658l-389.354 389.43L468.823 918.97L344.165 794.312l-126.27-126.344l123.853-123.853l126.27 126.343L857.446 281.03z" fill="currentColor"/></svg>
+
+                        <svg class="conteudo__mensagem__svgError" viewBox="0 0 24 24"><path d="M14.8 4.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H5.298C3.477 21 2 19.47 2 17.581c0-.639.173-1.264.498-1.807L9.2 4.613c.962-1.603 2.996-2.094 4.543-1.096c.428.276.79.651 1.057 1.096zm-2.22.839a1.077 1.077 0 0 0-1.514.365L4.365 16.98a1.17 1.17 0 0 0-.166.602c0 .63.492 1.14 1.1 1.14H18.7c.206 0 .407-.06.581-.172a1.164 1.164 0 0 0 .353-1.57L12.933 5.817a1.12 1.12 0 0 0-.352-.365zM12 17a1 1 0 1 1 0-2a1 1 0 0 1 0 2zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z" fill="currentColor"/></svg>
+                        <small></small>
+                    </div>
                 </div>
-                <div class="input">
-                    <label for="senha2">Repita a senha</label>
-                    <input type="password" name="senha" id="senha2">
+                <div class="conteudo">
+                    <label class='conteudo__label' for="senha2">Repita a senha</label>
+                    <input class="conteudo__input" type="password" name="senha" id="senha2">
+                    <div class="conteudo__mensagem">
+                        <svg class="conteudo__mensagem__svgCerto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1200 1200"><path d="M600 0C268.629 0 0 268.629 0 600s268.629 600 600 600s600-268.629 600-600S931.371 0 600 0zm257.446 281.03l124.657 124.658l-389.354 389.43L468.823 918.97L344.165 794.312l-126.27-126.344l123.853-123.853l126.27 126.343L857.446 281.03z" fill="currentColor"/></svg>
+
+                        <svg class="conteudo__mensagem__svgError" viewBox="0 0 24 24"><path d="M14.8 4.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H5.298C3.477 21 2 19.47 2 17.581c0-.639.173-1.264.498-1.807L9.2 4.613c.962-1.603 2.996-2.094 4.543-1.096c.428.276.79.651 1.057 1.096zm-2.22.839a1.077 1.077 0 0 0-1.514.365L4.365 16.98a1.17 1.17 0 0 0-.166.602c0 .63.492 1.14 1.1 1.14H18.7c.206 0 .407-.06.581-.172a1.164 1.164 0 0 0 .353-1.57L12.933 5.817a1.12 1.12 0 0 0-.352-.365zM12 17a1 1 0 1 1 0-2a1 1 0 0 1 0 2zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z" fill="currentColor"/></svg>
+                        <small></small>
+                    </div>
                 </div>
-                <input class="botao" type="submit" value="Confirmar">
+                <input class="container__botao" type="submit" value="Confirmar">
             </form>
         </section>
     </section>
 </body>
+<script>
+    const user = document.getElementById('username')
+    const senha1 = document.getElementById('senha1')
+    const senha2 = document.getElementById('senha2')
+
+     function userValidator(e){
+        if(user.value.trim() === '') {
+            e.preventDefault()
+            setErrorFor(user, 'Usuário vazio')
+    	}else{
+            setSuccessFor(user)
+        }
+    }
+
+    function senhaValidator1(e){
+        if(senha1.value.trim() === ''){
+            e.preventDefault()
+            setErrorFor(senha1, 'Senha vazia')
+        }else{
+            console.log('teste')
+            setSuccessFor(senha1)
+        }
+    }
+    function senhaValidator2(e){
+        if(senha2.value.trim() === ''){
+            e.preventDefault()
+            setErrorFor(senha2, 'Senha vazia')
+        }else if(senha1.value.trim() !== senha2.value.trim()){
+            e.preventDefault()
+            setErrorFor(senha2, 'As senhas estão diferentes')
+        }
+        else{
+            setSuccessFor(senha2)
+        }
+    }
+
+    function validator(e){
+        userValidator(e)
+        senhaValidator1(e)
+        senhaValidator2(e)
+    }
+    
+	addEventListener('submit', validator)
+
+    function setSuccessFor(input) {
+    const formControl = input.parentElement
+    const small = formControl.querySelector('small')
+    formControl.classList.remove('conteudo--error')
+    formControl.classList.add('conteudo--success')
+    small.innerText = ' '
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement
+        const small = formControl.querySelector('small')
+        formControl.classList.remove('conteudo--success')
+        formControl.classList.add('conteudo--error')
+        small.innerText = message
+    }
+</script>
 </html>

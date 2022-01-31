@@ -12,6 +12,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+/*bloco do wrapper*/
 .wrapper{
     background-color: #040404;
     display: flex;
@@ -19,30 +20,48 @@
     align-items: center;
     height: 100vh;
 }
-h1{
+/*bloco do main*/
+.main{
+    padding: 50px 100px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.main__h1{
     color: white;
     font-size: 2rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     text-align: center;
 }
-label{
+/*bloco do container*/
+.container{
+    min-width: 15rem;
+}
+.container__botao{
+    border: none;
+    color: white;
+    padding: 10px 35px;
+    box-shadow: 0px 1px 1px #5359af;
+    background-color:#4851C7;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*bloco do conteudo*/
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+.conteudo__label{
     color: #FFFF;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
     font-weight: 200;
     margin-bottom: 5px;
 }
-input[type=submit]{
-    border: none;
-    padding: 10px 35px;
-    box-shadow: 0px 1px 1px #FFF278;
-    background-color:#c0cf1d;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-input[type=email]{
+.conteudo__input{
     padding: 6px 6px;
     background-color: #040404;
     border: 1px solid white;
@@ -51,26 +70,32 @@ input[type=email]{
     width: 100%;
     color: white;
 }
-.input{
-    display: flex;
-    flex-direction: column;
-    margin: 30px 0;
-}
-form{
-    min-width: 15rem;
-}
-.container{
-    padding: 50px 100px;
-    border-radius: 5px;
-    border: 1px solid white;
-}
-input[type=email]:focus{
-    border: 1px solid #11AF03;
-    box-shadow: 0px 1px 1px #11AF03;
+.conteudo__input:focus{
+    border: 1px solid #4851C7;
+    box-shadow: 0px 1px 1px #5359af;
     outline: none;
 }
+.conteudo--error small {
+	color: #e74c3c;
+    margin-left: 5px;
+    display: block
+}
+.conteudo--error .conteudo__mensagem__svgError{
+	color: #e74c3c;
+    display: block;
+}
+.conteudo__mensagem__svgError{
+    height: 14px;
+    width: 14px;
+    display: none;
+}
+.conteudo__mensagem{
+    margin-top: 5px ;
+    display: flex;
+    align-items: flex-start;
+}
 @media(max-width:400px){
-    .container{
+    .main{
         width: 100%;
         height: 100vh;
         display: flex;
@@ -83,16 +108,50 @@ input[type=email]:focus{
 </head>
 <body>
     <section class="wrapper">
-        <section class="container">
-            <h1>Recuperar senha</h1>
-            <form action="rec" method="post">
-                <div class="input">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Coloque email da sua conta aqui">
+        <section class="main">
+            <h1 class="main__h1">Recuperar senha</h1>
+            <form class="container" action="rec" method="post">
+                <div class="conteudo">
+                    <label class="conteudo__label" for="email">Email</label>
+                    <input class="conteudo__input" type="text" name="email" id="email" placeholder="Coloque o email da sua conta aqui">
+                    <div class="conteudo__mensagem">
+                        <svg class="conteudo__mensagem__svgError" viewBox="0 0 24 24"><path d="M14.8 4.613l6.701 11.161c.963 1.603.49 3.712-1.057 4.71a3.213 3.213 0 0 1-1.743.516H5.298C3.477 21 2 19.47 2 17.581c0-.639.173-1.264.498-1.807L9.2 4.613c.962-1.603 2.996-2.094 4.543-1.096c.428.276.79.651 1.057 1.096zm-2.22.839a1.077 1.077 0 0 0-1.514.365L4.365 16.98a1.17 1.17 0 0 0-.166.602c0 .63.492 1.14 1.1 1.14H18.7c.206 0 .407-.06.581-.172a1.164 1.164 0 0 0 .353-1.57L12.933 5.817a1.12 1.12 0 0 0-.352-.365zM12 17a1 1 0 1 1 0-2a1 1 0 0 1 0 2zm0-9a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z" fill="currentColor"/></svg>
+                        <small></small>
+                    </div>
                 </div>
-                <input class="botao" type="submit" value="Confirmar">
+                <input class="container__botao" type="submit" value="Confirmar">
             </form>
         </section>
     </section>
 </body>
+<script>
+    const email = document.getElementById('email')
+
+    function validator(e){
+        const emailValue = email.value.trim()
+        console.log(emailValue)
+
+        if(emailValue === '') {
+            e.preventDefault()
+            setErrorFor(email, 'Email vazio')
+    	}else if(!isEmail(emailValue)){
+            e.preventDefault()
+            setErrorFor(email, 'Não é um email válido.')
+        }
+    }
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement
+        const small = formControl.querySelector('small')
+        formControl.classList.remove('conteudo--success')
+        formControl.classList.add('conteudo--error')
+        small.innerText = message
+    }
+
+    function isEmail(email) {
+	    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
+    }
+
+    addEventListener('submit', validator)
+
+</script>
 </html>

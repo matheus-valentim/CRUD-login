@@ -55,10 +55,10 @@ app.get('/senha', async function(req, res) {
 
 // pegar informações do front-end
 app.post('/auth', async function(req, res) {
-	login(req, res)
+	login(req, res, app)
 })
 
-app.post('/validacao', (req, res) => {
+app.post('/pin', (req, res) => {
 	const senha = req.body.pin1 + req.body.pin2 + req.body.pin3 + req.body.pin4
 	const username = req.body.username
 	console.log(mudarSenha.pin, senha)
@@ -68,7 +68,7 @@ app.post('/validacao', (req, res) => {
 		req.session.username = username
 		res.redirect('/senha')
 	}else{
-		console.log('deu errado')
+		res.status(400).json({mensagem: 'Pin incorreto'})
 	}
 })
 //registro de usuário

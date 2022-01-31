@@ -9,10 +9,12 @@ const registro = async = (req, res) =>{
         bcrypt.genSalt().then( salt =>{
             bcrypt.hash(password, salt).then(hash =>{
                 connection.query(`INSERT INTO accounts (username, password, email) VALUES ('${username}', '${hash}', '${email}')`, ()=>{
-                    res.redirect('/')
+                    res.end()
                 })
             })
         })
+    }else{
+        res.status(400).json({mensagem:'Campo de usuário ou senha vazios'})
     }
 }
 module.exports = registro

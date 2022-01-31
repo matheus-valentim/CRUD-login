@@ -14,7 +14,7 @@
     box-sizing: border-box;
     font-family: 'poppins';
 }
-section{
+.wrapper{
     background-color: #040404;
     height: 100vh;
     display: flex;
@@ -22,12 +22,12 @@ section{
     flex-direction: column;
     align-items: center;
 }
-#container{
+.container{
     padding: 2rem 5rem;
     background-color: #11AF03;
     border-radius: 13px;
 }
-button{
+.wrapper__botao{
     cursor: pointer;
     border: none;
     background-color: #183292;
@@ -39,18 +39,18 @@ button{
     </style>
 </head>
 <body>
-    <section id="wrapper">
-        <div id="container">
-            <h1 id="texto"></h1>
+    <section class="wrapper">
+        <div class="container">
+            <h1 class="container__texto" id="texto"></h1>
         </div>
-        <button id="botao" onclick="clicar()" name="botao"><h2>Atualize ou delete sua conta aqui.</h2></button>
+        <button class="wrapper__botao" id="botao" onclick="clicar()" name="botao"><h2>Atualize ou delete sua conta aqui.</h2></button>
     </section>
 </body>
     <script>
         async function carregar(){
             const texto =  document.getElementById('texto')
             const user  = await fetch('/user').then(response => response.json())
-            .then(json =>texto.innerText =  `Bem vindo, ${json}!!`)
+            .then(user =>texto.innerText =  `Bem vindo, ${user}!!`)
         }
         carregar()
         

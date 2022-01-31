@@ -1,12 +1,11 @@
 var mysql = require('mysql2')
+require('dotenv').config()
 
 var connection = mysql.createConnection({
-	host     : 'localhost', 
-	user     : 'root',
-	password : 'ROOT',
-	database : 'nodelogin'
+	host     : process.env.HOSTSQL,
+	user     : process.env.USERSQL,
+	password : process.env.PASSSQL,
+	database : process.env.DATABASE
 })
-
-
 
 module.exports = connection
