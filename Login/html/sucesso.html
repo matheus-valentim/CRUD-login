@@ -1,72 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sucesso</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
-*{
-    padding:0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'poppins';
-}
-.wrapper{
-    background-color: #040404;
-    height: 100vh;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-}
-.container{
-    padding: 2rem 5rem;
-    background-color: #11AF03;
-    border-radius: 13px;
-}
-.wrapper__botao{
-    cursor: pointer;
-    border: none;
-    background-color: #183292;
-    color: white;
-    padding: 30px;
-    border-radius: 13px;
-}
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+				font-family: "poppins";
+			}
+			.container__texto {
+				font-size: 2rem;
+			}
+			.wrapper {
+				background-color: #040404;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.container {
+				min-width: 32%;
+				height: 15%;
+				background-color: #11af03;
+				border-radius: 13px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.agrupar {
+				margin-top: 30px;
+			}
+			.agrupar__botao {
+				cursor: pointer;
+				background-color: #040404;
+				color: white;
+				padding: 20px;
+				border-radius: 13px;
+				margin: 0px 20px;
+			}
+			.agrupar__botao--atualizar {
+				border: 1px solid #183292;
+			}
+			.agrupar__botao--deletar {
+				border: 1px solid #890202;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="wrapper">
+			<div class="container">
+				<h1 class="container__texto" id="texto"></h1>
+			</div>
+			<div class="agrupar">
+				<button
+					class="agrupar__botao agrupar__botao--atualizar"
+					id="botao__atualizar"
+					name="botao"
+				>
+					<h2>Atualize sua conta</h2>
+				</button>
+				<button
+					class="agrupar__botao agrupar__botao--deletar"
+					id="botao__deletar"
+					onclick="clicar()"
+					name="botao"
+				>
+					<h2>Delete sua conta</h2>
+				</button>
+			</div>
+		</section>
+	</body>
+	<script>
+		async function carregar() {
+			const texto = document.getElementById("texto");
+			const user = await fetch("/user")
+				.then((response) => response.json())
+				.then((user) => (texto.innerText = `Bem vindo, ${user}!!`));
+		}
+		carregar();
 
-    </style>
-</head>
-<body>
-    <section class="wrapper">
-        <div class="container">
-            <h1 class="container__texto" id="texto"></h1>
-        </div>
-        <button class="wrapper__botao" id="botao" onclick="clicar()" name="botao"><h2>Atualize ou delete sua conta aqui.</h2></button>
-    </section>
-</body>
-    <script>
-        async function carregar(){
-            const texto =  document.getElementById('texto')
-            const user  = await fetch('/user').then(response => response.json())
-            .then(user =>texto.innerText =  `Bem vindo, ${user}!!`)
-        }
-        carregar()
-        
-        const botao = document.getElementById('botao')
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({'data':'tudo certo'}),
-        }
-        function clicar(){
-            if (confirm('Quer mesmo deletar sua conta?')){
-                fetch('/deletar', options)
-                alert('conta deletada com sucesso!')
-            }
-        }
-    </script>
+		const botao = document.getElementById("botao__deletar");
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({ data: "tudo certo" }),
+		};
+		function clicar() {
+			if (confirm("Quer mesmo deletar sua conta?")) {
+				fetch("/deletar", options);
+				alert("conta deletada com sucesso!");
+			}
+		}
+	</script>
 </html>

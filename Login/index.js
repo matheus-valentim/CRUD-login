@@ -45,13 +45,11 @@ app.get('/sucesso', async function(req, res) {
 		res.sendFile(__dirname + '/html/falha.html')
 	}
 })
-app.get('/senha', async function(req, res) {
+app.get("/senha", async function(req, res) {
 	if (req.session.loggedin) {
 		res.sendFile(__dirname + '/html/senha.html')
 	} else {
-		res.sendFile(__dirname + '/html/falha.html')
-	}
-})
+		res.sendFile(__dirname + '/html/falha.html')}})
 
 // pegar informações do front-end
 app.post('/auth', async function(req, res) {

@@ -26,8 +26,7 @@ async function run(pin, email) {
       <strong>${pin}</strong></p></br>
     </body>
   </html> 
-    `,
-  });
-  console.log(mailSent);
+    `, })
+  console.log(mailSent)
 }
 module.exports = run
